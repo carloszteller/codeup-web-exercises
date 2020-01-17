@@ -25,6 +25,6 @@ ul { list-style: circle; }
 tr td { font-size: 1.25em; }
 
 a:link { color: navy; }
-a:active { color: darkred; }
 a:visited { color: blueviolet; }
 a:hover { color: darkorange; }
+a:active { color: darkred; }
