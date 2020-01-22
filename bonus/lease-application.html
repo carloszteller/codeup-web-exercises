@@ -1,10 +1,62 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lease Application</title>
+
+    <link rel="stylesheet" href="css/lease.css">
 </head>
 <body>
-$END$
+    <form action="https://request-inspector.glitch.me" method="post">
+        <section id="received" class="text-right">
+            <label for="received-date">Received on <input type="text" name="received-date" id="received-date"> (date)</label>
+            <label for="received-time"> at <input type="text" name="received-time" id="received-time"> (time)</label>
+        </section>
+        <section id="header" class="text-center">
+            <h1 class="small-caps">Texas Association of Realtors</h1>
+            <h2 class="all-caps">Rental Lease Application</h2>
+            <p class="all-caps">Use of this form by person who are not member of the Texas Association of Realtors&reg; is not authorized.</p>
+            <p style="font-weight: bold;">&copy;Texas Association of Realtors&reg;, Inc. 2007</p>
+            <h3 style="margin: 20px 0;">Each occupant and co-applicant 18 years or older must submit a separate application.</h3>
+        </section>
+        <hr>
+        <section id="property-address">
+            <label for="address">Property Address: <input type="text" name="address" id="address"></label>
+            <div class="text-right">Anticipated:
+                <label for="move-in-date">Move-in Date: <input type="text" name="move-in-date" id="move-in-date"></label>
+                <label for="monthly-rent">Monthly Rent: $ <input type="text" name="monthly-rent" id="monthly-rent"></label>
+                <label for="security-deposit">Security Deposit: $ <input type="text" name="security-deposit" id="security-deposit"></label>
+            </div>
+        </section>
+        <section id="referred-by">
+            Applicant was referred to Landlord by:
+            <div class="real-estate-agent">
+                <label for="real-estate-agent"><input type="checkbox" name="referred" id="real-estate-agent" value="real estate agent"> Real estate agent </label>
+                <label for="agent-name"><input type="text" name="agent-name" id="agent-name"> (name) </label>
+                <label for="agent-phone"><input type="text" name="agent-phone" id="agent-phone"> (phone)</label>
+            </div>
+            <label for="newspaper"><input type="checkbox" name="referred" id="newspaper" value="newspaper"> Newspaper </label>
+            <label for="sign"><input type="checkbox" name="referred" id="sign" value="sign"> Sign </label>
+            <label for="internet"><input type="checkbox" name="referred" id="internet" value="internet"> Internet </label>
+            <div class="referred-other">
+                <label for="other"><input type="checkbox" name="referred" id="other" value="other"> Other <input type="text" name="referred-other"></label>
+            </div>
+        </section>
+        <section id="applicant-info">
+            <label for="applicant-name">Applicant's Name (first, middle, last) <input type="text" name="applicant-name" id="applicant-name"></label>
+            <div class="co-applicant">
+                Is there a co-applicant?
+                <label for="co-applicant-yes"><input type="radio" name="co-applicant" id="co-applicant-yes" value="yes"> Yes</label>
+                <label for="co-applicant-no"><input type="radio" name="co-applicant" id="co-applicant-no" value="no"> No</label>
+                <span class="if-co-applicant-yes">If yes, co-applicant must submit a separate application.</span>
+            </div>
+            <div class="applicant-maiden-name">
+                <label for="maiden-name">Applicant's former last name (maiden or married) <input type="text" name="maiden-name" id="maiden-name"></label>
+            </div>
+        </section>
+    </form>
 </body>
 </html>

@@ -1,0 +1,39 @@
+* {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+}
+body {
+    padding: 50px;
+    font-family: sans-serif;
+}
+
+section { margin: 25px 0; }
+
+#property-address, #referred-by, #applicant-info {
+    display: flex;
+    flex-flow: row wrap;
+}
+#property-address *, #referred-by *, #applicant-info *  { flex: auto; }
+#property-address label[for=address] { flex-basis: 100%; }
+#property-address #address { width: calc(100% - 132px); }
+
+.real-estate-agent, .applicant-maiden-name { width: 100%; }
+.real-estate-agent #agent-name, .real-estate-agent #agent-phone { width: calc(50% - 134px); }
+
+.referred-other { width: 75%; }
+.referred-other input[type=text] { width: calc(100% - 62px); }
+
+#applicant-info label[for=applicant-name], .applicant-maiden-name { flex-basis: 100%; }
+#applicant-info #applicant-name { width: calc(100% - 260px); }
+.co-applicant { margin-left: 50px; }
+.if-co-applicant-yes, .applicant-maiden-name { margin-left: 50px; }
+.if-co-applicant-yes {
+    font-weight: bold;
+    font-style: italic;
+}
+.applicant-maiden-name #maiden-name { width: calc(100% - 352px); }
+
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+.small-caps { font-variant: small-caps; }
+.all-caps { text-transform: uppercase; }
