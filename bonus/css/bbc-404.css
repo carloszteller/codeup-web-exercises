@@ -10,33 +10,37 @@
 }
 body { font-family: sans-serif; }
 
-.navbar {
-    padding: 0 1.5em;
-    background-color: var(--darkgrey);
-    position: relative;
-    line-height: 45px;
-    clear: both;
-}
-
-.navbar-logo {
-    height: 25px;
-    vertical-align: middle;
-}
-
-.navbar-right { float: right; }
-.navbar-nav {
-    list-style: none;
-    float: left;
-}
-.navbar-nav > .nav-item {
+a {
+    padding: .75em 1em;
     border-left: 1px solid var(--lightgrey);
-    display: inline-block;
-}
-.navbar-nav > .nav-item > a {
     color: var(--white);
     display: block;
     font-weight: bold;
     text-decoration: none;
 }
 
-.navbar-right form { float: right; }
+.navbar {
+    padding: 0 1.5em;
+    background-color: var(--darkgrey);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-sign-in {
+    display: flex;
+    align-items: center;
+}
+.bbc-logo { height: 25px; }
+.sign-in { margin-left: 10px; }
+
+.navbar-nav-search {
+    display: flex;
+    align-items: center;
+    flex-basis: 65%;
+}
+.navbar-nav { list-style: none; }
+.navbar-nav > .nav-item { display: inline-block; }
+
+.navbar-search { flex-grow: 1; }
+.navbar-search input { width: 100%; }
