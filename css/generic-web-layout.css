@@ -1,0 +1,150 @@
+:root {
+    --black: black;
+    --lightgrey-menu: #f0f0f0;
+    --lightgrey-border: #ccc;
+    --grey: #666;
+    --darkgrey: #323232;
+    --green: cadetblue;
+    --white: white;
+}
+
+* {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+}
+
+body { font-family: sans-serif; }
+a { text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrapper {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 60% 25%;
+    grid-template-areas:
+            "nav nav nav"
+            "menu article ads"
+            "menu pagination pagination"
+            "menu main-footer main-footer"
+            "menu second-footer second-footer";
+}
+
+.top-nav {
+    grid-area: nav;
+    background-color: var(--black);
+    display: flex;
+}
+.top-nav a {
+    padding: .75em;
+    color: var(--white);
+    text-decoration: none;
+    display: inline-block;
+}
+.top-nav a:hover { background-color: var(--darkgrey); }
+.top-nav ul { list-style: none; }
+.top-nav ul > li {
+    display: inline-block;
+}
+
+.side-nav {
+    padding: 1.5em;
+    grid-area: menu;
+    background-color: var(--lightgrey-menu);
+}
+.side-menu-header {
+    margin-bottom: 1em;
+    font-size: 1.5em;
+}
+.side-nav ul { list-style: none; }
+.side-nav ul > li {
+    padding: .5em 0;
+    display: block;
+}
+.side-nav ul > li > a { color: var(--black); }
+
+.articles {
+    padding: 1.5em;
+    grid-area: article;
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-areas:
+            "article1"
+            "."
+            "article2"
+            "."
+            "article3";
+}
+.articles h1 {
+    margin-bottom: .75em;
+    color: var(--green);
+    font-size: 2.5em; font-weight: normal;
+}
+.article-1 { grid-area: article1; }
+.article-2 { grid-area: article2; }
+.article-3 { grid-area: article3; }
+
+.ads {
+    padding: 1.5em 1em;
+    grid-area: ads;
+    display: grid;
+    grid-auto-rows: 1fr 2fr 1fr;
+    grid-template-areas:
+        "ad-1"
+        "ad-2"
+        "."
+        "ad-3"
+        "ad-4"
+        "."
+        "ad-5"
+        "ad-6";
+    grid-gap: 1em;
+}
+div[class^='ad-'] {
+    border: 1px solid var(--lightgrey-border);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ad-1 { grid-area: ad-1; }
+.ad-2 { grid-area: ad-2; }
+.ad-3 { grid-area: ad-3; }
+.ad-4 { grid-area: ad-4; }
+.ad-5 { grid-area: ad-5; }
+.ad-6 { grid-area: ad-6; }
+
+.pagination {
+    margin: 2em 0;
+    grid-area: pagination;
+    display: flex;
+    justify-content: center;
+}
+.pagination > ul { list-style: none; }
+.pagination li { display: inline-block; }
+.pagination li > a {
+    padding: .5em .75em;
+    color: var(--black)
+    display: inline-block;
+}
+.pagination .active {
+    background-color: black;
+}
+.pagination .active > a {
+    color: var(--white);
+    display: inline-block;
+}
+.main-footer, .secondary-footer { color: var(--white); }
+.main-footer {
+    padding: 3em 1em;
+    grid-area: main-footer;
+    background-color: var(--grey);
+}
+
+.secondary-footer {
+    padding: 1em;
+    grid-area: second-footer;
+    background-color: var(--darkgrey);
+}
+.secondary-footer a {
+    color: var(--white);
+    text-decoration: underline;
+}
