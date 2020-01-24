@@ -1,0 +1,25 @@
+* {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+}
+
+.wrapper {
+    width: 100vw; height: 100vh;
+    display: grid;
+    grid-template-columns: 20% repeat(3, 20.75%) 1fr;
+    grid-gap: 10px;
+}
+.wrapper * {
+    padding: 1.25em;
+    background-color: gold;
+}
+
+header { grid-area: 1 / 1 / 2 / span 5; }
+
+nav { grid-area: 2 / 1 / span 15 / 2; }
+
+article { grid-area: 2 / 2 / span 14 / span 3; }
+
+section { grid-area: 2 / 5 / span 14 / 6; }
+
+footer { grid-area: 16 / 2 / 17 / span 4; }
