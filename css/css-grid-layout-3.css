@@ -6,7 +6,13 @@
 .wrapper {
     width: 100vw; height: 100vh;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template: repeat(5, 1fr) / repeat(4, 1fr);
+    grid-template-areas:
+            "box1 box1 box1 box1"
+            "box2 box3 box4 box4"
+            "box2 box5 box5 box6"
+            "box2 box7 box8 box9"
+            "box2 box10 box10 box10";
     grid-gap: 10px;
 }
 .wrapper * {
@@ -16,22 +22,22 @@
     font-size: 3.5em;
 }
 
-.box-1 { grid-area: 1 / 1 / 2 / span 4; }
+.box-1 { grid-area: box1; }
 
-.box-2 { grid-area: 2 / 1 / span 4 / 2; }
+.box-2 { grid-area: box2; }
 
-.box-3 { grid-area: 2 / 2 / 3 / 3; }
+.box-3 { grid-area: box3; }
 
-.box-4 { grid-area: 2 / 3 / 3 / span 2; }
+.box-4 { grid-area: box4; }
 
-.box-5 { grid-area: 3 / 2 / 4 / span 2; }
+.box-5 { grid-area: box5; }
 
-.box-6 { grid-area: 3 / 4 / 4 / 5; }
+.box-6 { grid-area: box6; }
 
-.box-7 { grid-area: 4 / 2 / 5 / 3; }
+.box-7 { grid-area: box7; }
 
-.box-8 { grid-area: 4 / 3 / 5 / 4; }
+.box-8 { grid-area: box8; }
 
-.box-9 { grid-area: 4 / 4 / 5 / 5; }
+.box-9 { grid-area: box9; }
 
-.box-10 { grid-area: 5 / 2 / 6 / span 3; }
+.box-10 { grid-area: box10; }

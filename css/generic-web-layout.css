@@ -122,7 +122,7 @@ div[class^='ad-'] {
 .pagination li { display: inline-block; }
 .pagination li > a {
     padding: .5em .75em;
-    color: var(--black)
+    color: var(--black);
     display: inline-block;
 }
 .pagination .active {

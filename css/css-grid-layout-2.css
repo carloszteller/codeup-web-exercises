@@ -6,7 +6,12 @@
 .wrapper {
     width: 100vw; height: 100vh;
     display: grid;
-    grid-template-columns: 20% repeat(4, 1fr);
+    grid-template: 1fr 65% repeat(2, 1fr) / 20% 65% 1fr;
+    grid-template-areas:
+            "header header header"
+            "nav article article"
+            "nav ads ads"
+            "footer footer footer";
     grid-gap: 10px;
 }
 .wrapper * {
@@ -14,12 +19,12 @@
     background-color: yellowgreen;
 }
 
-header { grid-area: 1 / 1 / 2 / span 5; }
+header { grid-area: header; }
 
-nav { grid-area: 2 / 1 / span 14 / 2; }
+nav { grid-area: nav; }
 
-article { grid-area: 2 / 2 / span 13 / span 4; }
+article { grid-area: article; }
 
-section { grid-area: 15 / 2 / 16 / span 4; }
+section { grid-area: ads; }
 
-footer { grid-area: 16 / 1 / 17 / span 5; }
+footer { grid-area: footer; }
