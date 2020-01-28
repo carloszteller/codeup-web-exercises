@@ -1,0 +1,2 @@
+.jumbotron { background: url("../img/pizza.png") center / cover no-repeat; }
+.jumbotron > h1 { background-color: rgba(255, 255, 255, .5); }
