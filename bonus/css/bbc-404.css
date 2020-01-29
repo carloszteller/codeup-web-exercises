@@ -9,14 +9,11 @@
     box-sizing: border-box;
 }
 body { font-family: sans-serif; }
-
 a {
     padding: .75em 1em;
-    border-left: 1px solid var(--lightgrey);
     color: var(--white);
-    display: block;
-    font-weight: bold;
     text-decoration: none;
+    display: block;
 }
 
 .navbar {
@@ -32,15 +29,22 @@ a {
     align-items: center;
 }
 .bbc-logo { height: 25px; }
-.sign-in { margin-left: 10px; }
+.sign-in {
+    margin-left: .5em;
+    border-left: 1px solid var(--lightgrey);
+}
 
 .navbar-nav-search {
     display: flex;
     align-items: center;
     flex-basis: 65%;
 }
-.navbar-nav { list-style: none; }
-.navbar-nav > .nav-item { display: inline-block; }
-
-.navbar-search { flex-grow: 1; }
-.navbar-search input { width: 100%; }
+.navbar-nav {
+    margin-right: .5em;
+    list-style: none;
+    display: flex;
+}
+.navbar-nav > .nav-item { border-left: 1px solid var(--lightgrey); }
+.navbar-nav > .nav-item:last-of-type { border-right: 1px solid var(--lightgrey); }
+.navbar-search { flex-grow: 2; }
+.navbar-search #search { width: 100%; }
