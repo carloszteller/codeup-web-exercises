@@ -1,24 +1,27 @@
 :root {
-    --darkgrey: #323232;
-    --lightgrey: rgba(255, 255, 255, .25);
-    --white: white;
+    --nav-bg: #323232;
+    --nav-border: rgba(255, 255, 255, .25);
+    --error-content-bg: #e0e0e0;
 }
 
 * {
     margin: 0; padding: 0;
     box-sizing: border-box;
 }
-body { font-family: sans-serif; }
+body {
+    font-family: sans-serif;
+    background: linear-gradient(to right, #eaeaea, #ececec, #eaeaea);
+}
 a {
     padding: .75em 1em;
-    color: var(--white);
+    color: #fff;
     text-decoration: none;
     display: block;
 }
 
 .navbar {
     padding: 0 1.5em;
-    background-color: var(--darkgrey);
+    background-color: var(--nav-bg);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -31,7 +34,7 @@ a {
 .bbc-logo { height: 25px; }
 .sign-in {
     margin-left: .5em;
-    border-left: 1px solid var(--lightgrey);
+    border-left: 1px solid var(--nav-border);
 }
 
 .navbar-nav-search {
@@ -44,7 +47,39 @@ a {
     list-style: none;
     display: flex;
 }
-.navbar-nav > .nav-item { border-left: 1px solid var(--lightgrey); }
-.navbar-nav > .nav-item:last-of-type { border-right: 1px solid var(--lightgrey); }
+.navbar-nav > .nav-item { border-left: 1px solid var(--nav-border); }
+.navbar-nav > .nav-item:last-of-type { border-right: 1px solid var(--nav-border); }
 .navbar-search { flex-grow: 2; }
 .navbar-search #search { width: 100%; }
+
+main { padding: 1.5em; }
+main h1 {
+    margin-bottom: 1em;
+    font-weight: lighter;
+}
+#error-content {
+    margin-bottom: 2em; padding: 1.5em;
+    background-color: var(--error-content-bg);
+    display: flex;
+    justify-content: center;
+}
+.card {
+    padding: 2em;
+    flex-basis: 75%;
+    background: linear-gradient(45deg, #fff, #dbdbdb);
+    border-radius: 5px;
+    box-shadow: 0 0 5px #999;
+    display: flex;
+    align-items: center;
+}
+.reason-solution {
+    flex-basis: 66%;
+}
+.reason-solution ul { margin-left: 1em; }
+.reason-solution ul:first-of-type { margin-bottom: 1em; }
+.error-image {
+    flex-basis: 34%;
+}
+.error-image img {
+    width: 100%; height: auto;
+}
