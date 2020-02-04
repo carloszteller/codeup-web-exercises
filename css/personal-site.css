@@ -1,3 +1,12 @@
 :root {
-
+    --blue: #06c;
+    --light-bg: #f1f1f1;
 }
+
+a { transition: color .15s; }
+a:hover { color: var(--blue) !important; }
+.btn:hover {
+    background-color: var(--blue);
+    border-color: var(--blue);
+}
+.light-bg { background-color: var(--light-bg); }

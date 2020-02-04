@@ -35,6 +35,25 @@ var weeklySalary = (hourlyGoogle * hoursWorkedGoogle) + (hourlyAmazon * hoursWor
 alert("Your total salary for this week is: $" + weeklySalary.toFixed(2) + ".");
 
 /*
+ * Prompts the user if the class conflicts with their schedule,
+ * then checks to see if the class is full,
+ * if the class doesn't conflict AND the class is not full, the user may enroll in the class
+ * */
+var isClassFull = false;
+var conflictsWithSchedule = prompt("Does this class conflict with your current schedule? [Y/N]");
+if(conflictsWithSchedule.toUpperCase() === 'Y') {
+    conflictsWithSchedule = true;
+} else {
+    conflictsWithSchedule = false;
+}
+
+if(!conflictsWithSchedule && !isClassFull) {
+    alert("Congratulations! You have enrolled in the class.")
+} else {
+    alert("I'm sorry, but you are unable to enroll in the class.")
+}
+
+/*
  * First prompts the user if they are a premium member, if yes ask if offer has expired
  * if not, prompts the user if they are purchasing more than 2 items
  * if not a premium member, and they are purchasing more than 2 items, ask if offer has expired
