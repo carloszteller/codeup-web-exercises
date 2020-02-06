@@ -436,13 +436,19 @@
 
     // Even More Function Bonuses
     // Create a function that will return how many whitespace characters are at the beginning and end of a string.
-
+    function countWhitespaceAtBeginningAndEndOfString(str) {
+        return str.match(/^\s+/)[0].length + str.match(/\s+$/)[0].length;
+    }
+    //console.log(countWhitespaceAtBeginningAndEndOfString("    Is there any whitespace?  "));
 
     //     Create a function that takes in two string inputs.
     //     If the second string input is present in the first, return the first input string with the second input string removed from it.
     //     If the second string input is present multiple times in the first, the second string will only be removed where it first occurs in the first string.
     //     If the second string input is not present in the first, return the first string as entered in the function.
-
+    function removeSecondFromFirst(str1, str2) {
+        return str1.replace(str2, "");
+    }
+    //console.log(removeSecondFromFirst("Here is one string string string", "one string"));
 
     // Create a function that takes in a string and returns true if the last letter is an "a" (otherwise, return false).
     function isLastAnA(str) {
@@ -451,7 +457,10 @@
     //console.log(isLastAnA("Mamba"));
 
     // EXTRA CHALLENGE: create a function that will return how many whitespace characters are at the beginning of a string (hint: use regex).
-
+    function countWhitespaceAtBeginningOfString(str) {
+        return str.match(/^\s+/)[0].length;
+    }
+    //console.log(countWhitespaceAtBeginningOfString("    Is there any whitespace?"));
 
     // Create a function returnTrueMessage() that returns the string "Hey, it's true!"
     function returnTrueMessage() {
@@ -474,5 +483,8 @@
     // Experiement passing in different functions.
     //     Create a function, willLoginUser() that takes in a username string, password string, user age, a boolean indicating if they are an admin.
     //     The function will return true if the username is not the same as the password and the user is at least 18 years old. If the user is an admin, they do not have to be a certain age but the password must still not match the username.
-
+    function willLoginUser(username, password, age, isAdmin) {
+        return username !== password && age >= 18 && isAdmin;
+    }
+    //console.log(willLoginUser("username", "password", 21, true));
 })();
