@@ -1,8 +1,12 @@
 :root {
     --blue: #06c;
-    --light-bg: #f1f1f1;
+    --light-bg: #f0f0f0;
+    --code-blue: #3b78e7;
+    --code-red: #c2185b;
+    --code-green: #0d904f;
 }
 
+/* Global */
 a { transition: color .15s; }
 a:hover { color: var(--blue) !important; }
 .btn:hover {
@@ -10,3 +14,14 @@ a:hover { color: var(--blue) !important; }
     border-color: var(--blue);
 }
 .light-bg { background-color: var(--light-bg); }
+
+/* Nav */
+
+/* Header */
+
+/* About Me */
+#about pre { white-space: pre-line; }
+
+.code-blue { color: var(--code-blue); }
+.code-red { color: var(--code-red); }
+.code-green { color: var(--code-green); }
