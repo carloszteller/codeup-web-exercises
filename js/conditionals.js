@@ -15,31 +15,31 @@
  *
  * Can you refactor your code to use functions?
  */
-// function userNumberInfo(num) {
-//     if(typeof num === 'number' && !isNaN(num)) {
-//         var message = "";
-//
-//         (num % 2 === 0) ? message += num + " is an even number.\n" : message += num + " is an odd number.\n";
-//
-//         message += num + " + 100 = " + parseInt(num + 100) + ".\n";
-//
-//         (num >= 0) ? message += num + " is a positive number." : message += num + " is a negative number.";
-//
-//         return message;
-//     } else {
-//         return "You did not enter a number. Goodbye...";
-//     }
-// }
-//
-// var enterNumber = confirm("Would you like to enter a number?");
-//
-// if(enterNumber) {
-//     var userNum = Number(prompt("Enter a number (positive or negative)."));
-//
-//     alert(userNumberInfo(userNum));
-// } else {
-//     alert("Goodbye...");
-// }
+function userNumberInfo(num) {
+    if(!isNaN(num)) {
+        var message = "";
+
+        (num % 2 === 0) ? message += num + " is an even number.\n" : message += num + " is an odd number.\n";
+
+        message += num + " + 100 = " + parseInt(num + 100) + ".\n";
+
+        (num >= 0) ? message += num + " is a positive number." : message += num + " is a negative number.";
+
+        return message;
+    } else {
+        return "You did not enter a number. Goodbye...";
+    }
+}
+
+var enterNumber = confirm("Would you like to enter a number?");
+
+if(enterNumber) {
+    var userNum = Number(prompt("Enter a number (positive or negative)."));
+
+    alert(userNumberInfo(userNum));
+} else {
+    alert("Goodbye...");
+}
 
 /* ########################################################################## */
 
