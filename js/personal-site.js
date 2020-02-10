@@ -1,10 +1,7 @@
 "use strict";
 
 (function() {
-    // Get the current year;
-    function getCurrentYear() {
-        var currentDate = new Date(Date.now());
-
-        return currentDate.getFullYear();
-    }
+    // Get the current year and place in year class located in the footer
+    var currentDate = new Date(Date.now());
+    document.getElementsByClassName('year')[0].innerText = currentDate.getFullYear();
 })();
