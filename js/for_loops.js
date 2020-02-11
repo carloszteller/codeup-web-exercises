@@ -22,7 +22,7 @@
             console.log(num + " x " + i + " = " + (num * i));
         }
     }
-    //showMultiplicationTable(7);
+    showMultiplicationTable(7);
 
     /*
     * Use a for loop and the code from the previous lessons to generate 10 random numbers between 20 and 200 and
@@ -33,11 +33,11 @@
     * 199 is odd
     * ...
     * */
-    // for(var i = 0; i < 10; i++) {
-    //     var randomNumber = Math.floor(Math.random() * 100) + 20;
-    //
-    //     console.log((randomNumber % 2 === 0) ? randomNumber + " is even" : randomNumber + " is odd");
-    // }
+    for(var i = 0; i < 10; i++) {
+        var randomNumber = Math.floor(Math.random() * 100) + 20;
+
+        console.log((randomNumber % 2 === 0) ? randomNumber + " is even" : randomNumber + " is odd");
+    }
 
     /*
     * Create a for loop that uses console.log to create the output shown below.
@@ -52,15 +52,15 @@
     * 88888888
     * 999999999
     * */
-    // for(var i = 1; i < 10; i++) {
-    //     var str = "";
-    //
-    //     for(var j = 0; j < i; j++) {
-    //         str += i;
-    //     }
-    //
-    //     console.log(str);
-    // }
+    for(var i = 1; i < 10; i++) {
+        var str = "";
+
+        for(var j = 0; j < i; j++) {
+            str += i;
+        }
+
+        console.log(str);
+    }
 
     /*
     * Create a for loop that uses console.log to create the output shown below.
