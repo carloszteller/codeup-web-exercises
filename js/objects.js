@@ -136,6 +136,10 @@
     //     console.log("Book #" + (i + 1) + "\nTitle: " + book.title + "\nAuthor: " + book.author.firstName + " " + book.author.lastName);
     // });
 
+    // for(var i = 0; i < books.length; i++) {
+    //     console.log("Book #" + (i + 1) + "\nTitle: " + books[i].title + "\nAuthor: " + books[i].author.firstName + " " + books[i].author.lastName);
+    // }
+
     /**
      * Bonus:
      * - Create a function named `createBook` that accepts a title and author
