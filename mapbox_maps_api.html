@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mapbox Maps API</title>
+
+    <!-- Mapbox CSS -->
+    ​<link href='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.css' rel='stylesheet' />
+
+    <!-- Custom CSS -->
+    <style>
+        #map {
+            /* the width and height may be set to any size */
+            width: 100%;
+            height: 500px;
+        }
+        .marker {
+            padding: 0;
+            width: 25px; height: 25px;
+            display: block;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <!-- Mapbox JS -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.8.0/mapbox-gl.js'></script>
+    <script src="js/keys.js"></script>
+    <script src="js/mapbox-geocoder-utils.js"></script>
+
+    <!-- Custom JS -->​
+    <script>
+        "use strict";
+
+        mapboxgl.accessToken = mapboxToken;
+
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v9'
+        });
+
+        map.addControl(new mapboxgl.NavigationControl());
+
+        var restaurants = [
+            {
+                name: 'Capos Pizzeria',
+                tagline: 'Slices & subs in a local strip mall hub',
+                address: '8522 Broadway St #105, San Antonio, TX 78217',
+                img: 'img/capos.jpg',
+                marker: 'img/pizza-marker.png'
+            },
+            {
+                name: 'Goros Sushi',
+                tagline: 'Lively spot for creative & classic rolls',
+                address: '2619 Mossrock, San Antonio, TX 78230',
+                img: 'img/goros.jpg',
+                marker: 'img/sushi-marker.png'
+            },
+            {
+                name: 'Safe House Drinkery',
+                tagline: 'Laid-back bar with pool & video games',
+                address: '5450 Babcock Rd # 140, San Antonio, TX 78240',
+                img: 'img/drinkery.jpg',
+                marker: 'img/beer-marker.png'
+            }
+        ];
+
+        restaurants.forEach(function(restaurant) {
+            markersAndPopups(restaurant.name, restaurant.tagline, restaurant.address, restaurant.img, restaurant.marker);
+        });
+
+        function markersAndPopups(name, tagline, address, img, markerImg) {
+            geocode(address, mapboxToken).then(function(result) {
+                map.setCenter([-98.53, 29.52]);
+                map.setZoom(12);
+
+                var el = document.createElement('div');
+                el.className = 'marker';
+                el.style.backgroundImage = 'url(' + markerImg + ')';
+
+                var popup = new mapboxgl.Popup()
+                    .setHTML("<p style='text-align: center'><span style='font-weight: bold'>" + name + "</span><br>" + tagline + "</p><img src='" + img + "' style='width: 100%; height: auto'>")
+                    .addTo(map);
+
+                var marker = new mapboxgl.Marker(el)
+                    .setLngLat(result)
+                    .addTo(map);
+
+                marker.setPopup(popup).togglePopup();
+            });
+        }
+    </script>
+</body>
+</html>
