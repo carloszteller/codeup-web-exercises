@@ -41,9 +41,12 @@
            }
         });
 
-        return numbers.sort();
+        return numbers.sort(function(a, b) {
+            return a - b;
+        });
     }
     // console.log(filterNumbers(["fred", true, 5, 3]));
+    // console.log(filterNumbers([100, 5, 20, 3]));
 
 // 2. Write a function, `getOlder()` that takes in array of dog objects and increases the value of the age properties by 1.
 
@@ -247,10 +250,7 @@ function adminList(users) {
     var admins = [];
     users.forEach(function(admin) {
         if(admin.isAdmin) {
-            admins.push({
-                isAdmin: admin.isAdmin,
-                email: admin.email
-            });
+            admins.push(admin);
         }
     });
 
@@ -341,4 +341,20 @@ var fillings = [
     "tuna"
 ];
 
-console.log(makeSandwichObjects(breads, fillings));
+// console.log(makeSandwichObjects(breads, fillings));
+
+// TODO Write a function named keepYellow that accepts an array of strings and returns an array with all the strings
+//  that are equal to "yellow"
+function keepYellow(array) {
+    var yellows = [];
+
+    array.forEach(function(arr) {
+       if(arr === 'yellow') {
+           yellows.push(arr);
+       }
+    });
+
+    return yellows;
+}
+
+console.log(keepYellow(["yellow", "red", "blue", "yellow", "black", "brown", "yellow"]));
