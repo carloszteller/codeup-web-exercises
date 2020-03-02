@@ -7,6 +7,27 @@
     <style>
         .invisible { visibility: hidden; }
         .highlighted { background-color: yellow; }
+
+        .images-container {
+            padding: 0 15px;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }
+        .img-frame {
+            flex-basis: calc(33% - 15px);
+            display: flex;
+            flex-flow: column nowrap;
+            overflow: hidden;
+        }
+        .img-frame > img {
+            border: 10px solid brown;
+            object-fit: cover;
+        }
+        .swap {
+            margin-top: 20px;
+            align-self: center;
+        }
     </style>
 </head>
 <body>
@@ -44,6 +65,48 @@
     </dl>
     <a href="" class="toggle-dd">Toggle DD Elements</a>
 
+    <h3>Hot Springs National Park</h3>
+    <ul id="hot-springs">
+        <li>Was once known as Hot Springs Reservation. It was set aside in 1832 to protect the Park's primary resource, the hot springs.</li>
+        <li>Hot Springs was actually the first area in the United States to be set aside for its natural features.</li>
+        <li>Best known for the 47 hot springs that come out of the Hot Springs Mountain at an average 143° Fahrenheit.</li>
+        <li>The water is naturally potable (good to drink) when it arrives at the surface of Hot Springs Mountain.</li>
+    </ul>
+    <button id="springs-btn">Highlight Hot Springs Info</button>
+
+    <h3>Gateway Arch National Park</h3>
+    <ul id="gateway-arch">
+        <li>The park is a memorial to Thomas Jefferson's role in opening the West, to the pioneers who helped shape its history, and to Dred Scott who sued for his freedom in the Old Courthouse.</li>
+        <li>Construction of the Arch began in 1963, and was completed on October 28, 1965, for a total cost of less than $15 million.</li>
+        <li>The Arch has foundations sunk 60 feet into the ground, and is built to withstand earthquakes and high winds; it sways up to 1 inch in a 20 mph wind, and is built to sway up to 18 inches.</li>
+        <li>The Old Courthouse is one of the oldest standing buildings in St. Louis.</li>
+    </ul>
+    <button id="gateway-btn">Highlight Gateway Arch Info</button>
+    
+    <h3>Big Cypress National Preserve</h3>
+    <ul id="big-cypress">
+        <li>First the Calusa, followed by European explorers of the 1500s, then the Miccosukee, Seminole and other settlers to the area.</li>
+        <li>The completion of the Tamiami Trail in 1928, allowed for easy travel across the swamp for everyone who could afford a Model-T.</li>
+        <li>The preserve encompasses approximately 729,000 acres of a freshwater swamp ecosystem, offering refuge to a wide variety of plants and animals.</li>
+        <li>Plants and animals in the Preserve are protected from unauthorized collection.</li>
+    </ul>
+    <button id="cypress-btn">Highlight Big Cypress Info</button>
+
+    <div class="images-container">
+        <div class="img-frame">
+            <img src="img/hot-springs.jpg" alt="">
+            <button class="swap">Swap</button>
+        </div>
+        <div class="img-frame">
+            <img src="img/gateway-arch.jpg" alt="">
+            <button class="swap">Swap</button>
+        </div>
+        <div class="img-frame">
+            <img src="img/big-cypress.jpg" alt="">
+            <button class="swap">Swap</button>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
         "use strict";
@@ -56,6 +119,69 @@
 
             $('dt').click(function() {
                $(this).toggleClass('highlighted');
+            });
+
+            $('button').click(function() {
+                var button = $(this).attr('id');
+
+                switch(button) {
+                    case 'springs-btn':
+                        $('#hot-springs').siblings().children().removeClass('highlighted');
+                        $('#hot-springs > li').addClass('highlighted');
+                        break;
+                    case 'gateway-btn':
+                        $('#gateway-arch').siblings().children().removeClass('highlighted');
+                        $('#gateway-arch > li').addClass('highlighted');
+                        break;
+                    case 'cypress-btn':
+                        $('#big-cypress').siblings().children().removeClass('highlighted');
+                        $('#big-cypress > li').addClass('highlighted');
+                        break;
+                }
+            });
+
+            $('h3').click(function() {
+                $(this).siblings().next().children().css('font-weight', 'normal');
+                $(this).next().children().css('font-weight', 'bold');
+            });
+
+            $('li').click(function() {
+                $(this).parent().siblings().children().css('color', 'black');
+                $(this).parent().children().first().css('color', 'blue');
+            });
+
+            $('.swap').click(function() {
+                var img1 = '', img2 = '';
+
+                if($(this).parent().is(':first-of-type')) {
+                    img1 = $(this).parent().children('img').attr('src');
+                    img2 = $(this).parent().next().children('img').attr('src');
+
+                    $(this).parent().children('img').attr('src', img2);
+                    $(this).parent().next().children('img').attr('src', img1);
+                } else if($(this).parent().is(':nth-of-type(2)')) {
+                    var random = Math.floor(Math.random() * 2);
+
+                    if(random === 0) {
+                        img1 = $(this).parent().children('img').attr('src');
+                        img2 = $(this).parent().next().children('img').attr('src');
+
+                        $(this).parent().children('img').attr('src', img2);
+                        $(this).parent().next().children('img').attr('src', img1);
+                    } else {
+                        img1 = $(this).parent().children('img').attr('src');
+                        img2 = $(this).parent().prev().children('img').attr('src');
+
+                        $(this).parent().children('img').attr('src', img2);
+                        $(this).parent().prev().children('img').attr('src', img1);
+                    }
+                } else {
+                    img1 = $(this).parent().children('img').attr('src');
+                    img2 = $(this).parent().prev().children('img').attr('src');
+
+                    $(this).parent().children('img').attr('src', img2);
+                    $(this).parent().prev().children('img').attr('src', img1);
+                }
             });
         });
     </script>
