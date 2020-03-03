@@ -7,6 +7,25 @@
     <style>
         .invisible { visibility: hidden; }
         .highlighted { background-color: yellow; }
+        .hidden { display: none; }
+
+        .newsletter, .signup {
+            padding: 2em;
+            width: 650px;
+            border: 1px solid grey;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+        .close-newsletter, .close-signup {
+            color: grey;
+            font-size: 2em; font-weight: bold;
+            position: absolute;
+            top: 5px; right: 15px;
+        }
+        .close-newsletter:hover, .close-signup:hover { cursor: pointer; }
+        .signup { display: none; }
 
         .images-container {
             padding: 0 15px;
@@ -31,6 +50,14 @@
     </style>
 </head>
 <body>
+    <div class="newsletter">
+        <h1>Would you like to sign up for our newsletter?</h1>
+        <span class="close-newsletter">&times;</span>
+    </div>
+    <div class="signup">
+        <h2>Would you like to register to our site?</h2>
+        <span class="close-signup">&times;</span>
+    </div>
     <h1>National Parks FAQs</h1>
     <dl>
         <dt>Who is the director of the National Park Service?</dt>
@@ -65,8 +92,8 @@
     </dl>
     <a href="" class="toggle-dd">Toggle DD Elements</a>
 
-    <h3>Hot Springs National Park</h3>
-    <ul id="hot-springs">
+    <h3>Hot Springs National Park &plus;</h3>
+    <ul id="hot-springs" class="hidden">
         <li>Was once known as Hot Springs Reservation. It was set aside in 1832 to protect the Park's primary resource, the hot springs.</li>
         <li>Hot Springs was actually the first area in the United States to be set aside for its natural features.</li>
         <li>Best known for the 47 hot springs that come out of the Hot Springs Mountain at an average 143° Fahrenheit.</li>
@@ -74,8 +101,8 @@
     </ul>
     <button id="springs-btn">Highlight Hot Springs Info</button>
 
-    <h3>Gateway Arch National Park</h3>
-    <ul id="gateway-arch">
+    <h3>Gateway Arch National Park &plus;</h3>
+    <ul id="gateway-arch" class="hidden">
         <li>The park is a memorial to Thomas Jefferson's role in opening the West, to the pioneers who helped shape its history, and to Dred Scott who sued for his freedom in the Old Courthouse.</li>
         <li>Construction of the Arch began in 1963, and was completed on October 28, 1965, for a total cost of less than $15 million.</li>
         <li>The Arch has foundations sunk 60 feet into the ground, and is built to withstand earthquakes and high winds; it sways up to 1 inch in a 20 mph wind, and is built to sway up to 18 inches.</li>
@@ -83,14 +110,16 @@
     </ul>
     <button id="gateway-btn">Highlight Gateway Arch Info</button>
     
-    <h3>Big Cypress National Preserve</h3>
-    <ul id="big-cypress">
+    <h3>Big Cypress National Preserve &plus;</h3>
+    <ul id="big-cypress" class="hidden">
         <li>First the Calusa, followed by European explorers of the 1500s, then the Miccosukee, Seminole and other settlers to the area.</li>
         <li>The completion of the Tamiami Trail in 1928, allowed for easy travel across the swamp for everyone who could afford a Model-T.</li>
         <li>The preserve encompasses approximately 729,000 acres of a freshwater swamp ecosystem, offering refuge to a wide variety of plants and animals.</li>
         <li>Plants and animals in the Preserve are protected from unauthorized collection.</li>
     </ul>
     <button id="cypress-btn">Highlight Big Cypress Info</button>
+
+    <button id="highlight-last-all">Highlight Last All</button>
 
     <div class="images-container">
         <div class="img-frame">
@@ -140,6 +169,12 @@
                 }
             });
 
+            $('#highlight-last-all').click(function() {
+                $('h3').each(function() {
+                    $(this).next().children().last().addClass('highlighted');
+                });
+            });
+
             $('h3').click(function() {
                 $(this).siblings().next().children().css('font-weight', 'normal');
                 $(this).next().children().css('font-weight', 'bold');
@@ -182,6 +217,23 @@
                     $(this).parent().children('img').attr('src', img2);
                     $(this).parent().prev().children('img').attr('src', img1);
                 }
+            });
+
+            $('.close-newsletter').click(function() {
+                $('.newsletter').hide();
+            });
+
+            $('h3').click(function() {
+                $(this).next().slideToggle();
+                $(this).siblings('h3').next().slideUp();
+            })
+
+            setTimeout(function() {
+                $('.signup').fadeIn();
+            }, 8000);
+
+            $('.close-signup').click(function() {
+                $('.signup').hide();
             });
         });
     </script>
