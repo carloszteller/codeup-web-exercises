@@ -4,28 +4,17 @@
     <meta charset="UTF-8">
     <title>jQuery FAQ</title>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     <style>
         .invisible { visibility: hidden; }
         .highlighted { background-color: yellow; }
         .hidden { display: none; }
 
-        .newsletter, .signup {
-            padding: 2em;
-            width: 650px;
-            border: 1px solid grey;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            position: relative;
+        .newsletter h1, .signup h2 {
+            margin: 0; padding: 0;
+            display: inline-block;
         }
-        .close-newsletter, .close-signup {
-            color: grey;
-            font-size: 2em; font-weight: bold;
-            position: absolute;
-            top: 5px; right: 15px;
-        }
-        .close-newsletter:hover, .close-signup:hover { cursor: pointer; }
-        .signup { display: none; }
 
         .images-container {
             padding: 0 15px;
@@ -50,14 +39,33 @@
     </style>
 </head>
 <body>
-    <div class="newsletter">
+    <div class="newsletter alert alert-info" role="alert">
         <h1>Would you like to sign up for our newsletter?</h1>
-        <span class="close-newsletter">&times;</span>
+        <button type="button" class="close-newsletter close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
-    <div class="signup">
-        <h2>Would you like to register to our site?</h2>
-        <span class="close-signup">&times;</span>
+
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Signup</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h2>Would you like to register to our site?</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Yes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
     </div>
+
     <h1>National Parks FAQs</h1>
     <dl>
         <dt>Who is the director of the National Park Service?</dt>
@@ -136,7 +144,9 @@
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script>
         "use strict";
 
@@ -219,10 +229,6 @@
                 }
             });
 
-            $('.close-newsletter').click(function() {
-                $('.newsletter').hide();
-            });
-
             $('h3').click(function() {
                 $(this).next().slideToggle();
                 $(this).siblings('h3').next().slideUp();
@@ -232,9 +238,9 @@
                 $('.signup').fadeIn();
             }, 8000);
 
-            $('.close-signup').click(function() {
-                $('.signup').hide();
-            });
+            window.setTimeout(function () {
+                $("#signupModal").modal("show");
+            }, 8000);
         });
     </script>
 </body>
