@@ -1,26 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Online Store</title>
+    <title>My Tool Store - We Gots Dem Tools</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <style>
+        :root {
+            --orange: #f96302;
+        }
+
+        a:hover { color: var(--orange) !important; }
+
+        .navbar { border-bottom: 2px solid var(--orange); }
+        .navbar-toggler { border: 1px solid var(--orange) !important; }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(244, 99, 2)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
+        }
+        .navbar-brand > img { height: 75px; }
+        .nav-item { padding: 0 1em; }
+
+        .card { border: none; }
+
+        .refresh-btn {
+            background-color: rgba(244, 99, 2, .75);
+            border: 1px solid var(--orange);
+        }
+
+        footer { border-top: 2px solid var(--orange); }
+    </style>
 </head>
 <body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#"><img src="img/tool-store-logo.png" alt="My Tools Store logo"></a>
 
-    <h1>My Tool Store</h1>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <table id="products">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Categories</th>
-            </tr>
-        </thead>
-        <tbody id="insertProducts"></tbody>
-    </table>
-    <button class="refresh">Refresh</button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto text-center">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Shop<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">DIY Ideas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Savings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Services</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mt-5">
+        <div id="products" class="row"></div>
+    </main>
+
+    <!--    <table id="products">-->
+    <!--        <thead>-->
+    <!--            <tr>-->
+    <!--                <th>Title</th>-->
+    <!--                <th>Quantity</th>-->
+    <!--                <th>Price</th>-->
+    <!--                <th>Categories</th>-->
+    <!--            </tr>-->
+    <!--        </thead>-->
+    <!--        <tbody id="insertProducts"></tbody>-->
+    <!--    </table>-->
+
+    <div class="refresh-content mb-5 d-block text-center">
+        <button class="refresh-btn btn">Refresh</button>
+    </div>
+
+    <footer class="p-3">
+        <p class="copyright m-0 p-0 text-center text-muted">&copy <span class="year"></span>. My Tools Store. All rights reserved.</p>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -36,36 +95,47 @@
         //             its contents and fields
         //       HINT: You will want to target #insertProducts for your new HTML elements
 
-        $.ajax('data/inventory.json').done(function(data) {
-            $.each(data, function(i, item) {
-                $('#insertProducts').append(
-                    '<tr>' +
-                        '<td>' + item.title + '</td>' +
-                        '<td>' + item.quantity + '</td>' +
-                        '<td>' + item.price + '</td>' +
-                        '<td>' + item.categories + '</td>' +
-                    '</tr>'
-                );
-            });
-        });
-
-        $('.refresh').click(function() {
-            // location.reload();
+        function showInventory() {
             $.ajax('data/inventory.json').done(function(data) {
-                $('#insertProducts').html('');
+                // $.each(data, function(i, item) {
+                //     $('#insertProducts').append(
+                //         '<tr>' +
+                //             '<td>' + item.title + '</td>' +
+                //             '<td>' + item.quantity + '</td>' +
+                //             '<td>' + item.price + '</td>' +
+                //             '<td>' + item.categories + '</td>' +
+                //         '</tr>'
+                //     );
+                // });
+
+                $('#products').html('');
 
                 $.each(data, function(i, item) {
-                    $('#insertProducts').append(
-                        '<tr>' +
-                        '<td>' + item.title + '</td>' +
-                        '<td>' + item.quantity + '</td>' +
-                        '<td>' + item.price + '</td>' +
-                        '<td>' + item.categories + '</td>' +
-                        '</tr>'
+                    $('#products').append(
+                        '<div class="col-md-6 col-lg-4">' +
+                            '<div class="card">' +
+                                '<img src="' + item.image + '" class="card-img-top" alt="">' +
+                                '<div class="card-body">' +
+                                    '<h5 class="card-title">' + item.title + '</h5>' +
+                                    '<p class="font-weight-bold"><sup>$</sup>' + item.price.toFixed(2) + '</p>' +
+                                    '<p class="small">Quanity: ' + item.quantity + '<br>' +
+                                    'Product Category: ' + item.categories.join(', ') + '</p>' +
+                                '</div>' +
+                            '</div>' +
+                        '</div>'
                     );
                 });
             });
+        }
+
+        showInventory();
+
+        $('.refresh-btn').click(function() {
+            // location.reload();
+            showInventory();
         });
+
+        $('.year').html(new Date().getFullYear());
     })();
     </script>
 

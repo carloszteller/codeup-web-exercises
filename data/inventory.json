@@ -1,6 +1,7 @@
 [
     {
         "title": "Hammer",
+        "image": "img/hammer.jpg",
         "quantity": 25,
         "categories": [
             "tool"
@@ -8,6 +9,7 @@
         "price": 20
     }, {
         "title": "Drill",
+        "image": "img/drill.jpg",
         "quantity": 5,
         "categories": [
             "tool",
@@ -16,6 +18,7 @@
         "price": 100
     }, {
         "title": "Mower",
+        "image": "img/mower.jpg",
         "quantity": 5,
         "categories": [
             "tool",
@@ -25,6 +28,7 @@
         "price": 200
     }, {
         "title": "Screwdrivers",
+        "image": "img/screwdriver.jpg",
         "quantity": 25,
         "categories": [
             "tool"
@@ -32,6 +36,7 @@
         "price": 10
     }, {
         "title": "NI 1",
+        "image": "img/coming-soon.jpg",
         "quantity": 1,
         "categories": [
             "tool",
@@ -40,6 +45,7 @@
         "price": 1
     }, {
         "title": "NI 2",
+        "image": "img/coming-soon.jpg",
         "quantity": 2,
         "categories": [
             "tool",
@@ -48,6 +54,7 @@
         "price": 2
     }, {
         "title": "NI 3",
+        "image": "img/coming-soon.jpg",
         "quantity": 3,
         "categories": [
             "tool"
