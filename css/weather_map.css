@@ -1,0 +1,30 @@
+:root {
+    --wc-blue: #133467;
+}
+
+#map {
+    width: 100%; height: 400px;
+}
+
+.today, .tomorrow { border-right: 1px solid lightsteelblue; }
+
+.currently .temp { font-size: 2.75em; }
+.currently sup {
+    font-size: 1.5em;
+    top: -20px;
+}
+
+.fahrenheit, .celsius {
+    padding: 0 5px;
+    color: var(--wc-blue);
+    font-weight: 300;
+}
+.fahrenheit:hover, .celsius:hover { cursor: pointer; }
+.fahrenheit.active, .celsius.active { color: black; }
+.fahrenheit.active:hover, .celsius.active:hover { cursor: initial; }
+
+.high > sup, .low > sup { padding: 0 2px; }
+
+@media (max-width: 768px) {
+    .today { border: none; }
+}
