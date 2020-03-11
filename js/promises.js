@@ -17,7 +17,7 @@ const wait = time => {
 const user_commit = username => {
     return fetch(`https://api.github.com/users/${username}/events/public`, {headers: {'Authorization': githubToken}}).then(response => response.json()).then(response => {
         console.log(response);
-        let commits = response[response.length - 1].payload.commits;
+        let commits = response[0].payload.commits;
         return fetch(commits[commits.length - 1].url, {headers: {'Authorization': githubToken}}).then(response => response.json());
     });
 }
