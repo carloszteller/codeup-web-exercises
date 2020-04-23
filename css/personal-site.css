@@ -1,9 +1,6 @@
 :root {
     --blue: #06c;
     --light-bg: #f0f0f0;
-    --code-blue: #3b78e7;
-    --code-red: #c2185b;
-    --code-green: #0d904f;
 }
 
 /* Global */
@@ -22,6 +19,4 @@ a:hover { color: var(--blue) !important; }
 /* About Me */
 #about pre { white-space: pre-line; }
 
-.code-blue { color: var(--code-blue); }
-.code-red { color: var(--code-red); }
-.code-green { color: var(--code-green); }
+#skills { width: 100%; }
